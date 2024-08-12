@@ -11,6 +11,7 @@ import SubmitButton from "../ui/SubmitButton"
 import { useState } from "react"
 import { UserFormValidation } from "@/lib/validation"
 import { useRouter } from "next/navigation"
+import { createuser } from "@/lib/actions/patient.actions"
 
 export enum FormFieldType{
     INPUT='input',
@@ -27,6 +28,7 @@ export enum FormFieldType{
 
 
 const PatientForm = ()=> {
+  console.log("Button Clicked");
 
   //router
   const router= useRouter();
@@ -45,24 +47,31 @@ const PatientForm = ()=> {
   // 2. Define a submit handler.
  async function onSubmit({name,email,phone}: z.infer<typeof UserFormValidation>) {
     // Do something with the form values.
-    
+    console.log("Button Clicked");
     setIsLoading(true);
     try{
 
-        // catch the user data and store it 
-        // const userData={
-        //   name,email,phone  
-        // }
-        // create a user object
-        // const user=await createUser(userData); 
+        
+        
+        const userData={
+          name,email,phone  
+        }
+        console.log("Button Clicked");
+       
+       
+        const user=await createuser(userData); 
 
-        //redirect user to store data
-        // if(user) router.push('/patient/${user.$id}/register')
+       
+        
+        if(user) router.push(`/patients/${user.$id}/register`)
+        // router.push(`app\patients\[userId]\register\page.tsx`)
 
     }catch(error)
     {
         console.log(error);
     }
+
+    setIsLoading(false);
   }
 
 
@@ -110,7 +119,7 @@ const PatientForm = ()=> {
 
         />
         
-        <SubmitButton isLoading={isLoading}> Get Started</SubmitButton>
+        <SubmitButton isLoading={isLoading} children={undefined}></SubmitButton>
       </form>
     </Form>
   )
