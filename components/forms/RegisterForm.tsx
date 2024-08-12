@@ -24,7 +24,7 @@ export enum FormFieldType {
   SKELETON = "skeleton",
 }
 
-const PatientForm = () => {
+const RegisterForm = () => {
   console.log("PatientForm Rebuilds");
 
   //router
@@ -72,16 +72,6 @@ const PatientForm = () => {
     // setIsLoading(false);
   }
 
-  // Function to handle manual redirection to registration page
-  const handleRedirect = () => {
-    // You can redirect to any route you want here
-    router.push("/patients/maindashbaord");
-  };
-
-  const navigateToMainDashboard = () => {
-    router.push("patients");
-  };
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
@@ -122,28 +112,12 @@ const PatientForm = () => {
           iconSrc="/assets/icons/"
           iconAlt="email icon"
         />
-        <button
-          type="button"
-          className="shad-primary-btn w-full mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          onClick={navigateToMainDashboard}
-        >
-          Main Dashboard
-        </button>
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
-
-        {/* Manual Redirect Button */}
-        {/* <button
-          type="button"
-          onClick={handleRedirect}
-          className="shad-primary-btn w-full mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Main Dashbaoard
-        </button> */}
       </form>
       {message && <p>{message}</p>} {/* Display the message */}
     </Form>
   );
 };
 
-export default PatientForm;
+export default RegisterForm;
