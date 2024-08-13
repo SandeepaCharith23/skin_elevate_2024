@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import CustomFormField from "../ui/CustomFormField";
-import SubmitButton from "../ui/SubmitButton";
+import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
 
-import { createuser } from "@/lib/actions/patient.actions";
+import { createUser, getUser } from "@/lib/actions/patient.actions";
 
 export enum FormFieldType {
   INPUT = "input",
@@ -24,9 +24,7 @@ export enum FormFieldType {
   SKELETON = "skeleton",
 }
 
-const RegisterForm = () => {
-  console.log("PatientForm Rebuilds");
-
+const RegisterForm = async ({ user }: { user: User }) => {
   //router
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -89,28 +87,6 @@ const RegisterForm = () => {
           placeholder="John "
           iconSrc="/assets/icons/user.svg"
           iconAlt="user icon"
-        />
-
-        {/* user email address */}
-        <CustomFormField
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name="User email address"
-          label="email address"
-          placeholder="abc@gmail.com"
-          iconSrc="/assets/icons/email.svg"
-          iconAlt="email icon"
-        />
-
-        {/* user mobile number */}
-        <CustomFormField
-          fieldType={FormFieldType.PHONE_INPUT}
-          control={form.control}
-          name="User mobile phone number"
-          label="Mobile number"
-          placeholder="+94 XXXXXXXXX"
-          iconSrc="/assets/icons/"
-          iconAlt="email icon"
         />
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
