@@ -22,6 +22,7 @@ export enum FormFieldType {
   DATE_PICKER = "datePicker",
   SELECT = "select",
   SKELETON = "skeleton",
+  FILE_UPLOAD = "fileUpload",
 }
 
 export const PatientForm = () => {

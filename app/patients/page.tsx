@@ -8,7 +8,7 @@ const MainDashBoardPage = async () => {
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[496px]">
+        <div className="sub-container max-w-[90%]">
           <Image
             src="/assets/icons/logo-full.svg"
             alt="Logo image"
@@ -17,6 +17,7 @@ const MainDashBoardPage = async () => {
             className="mb-12 h-10 w-fit"
           />
 
+          {/* <RegisterForm user={undefined}></RegisterForm> */}
           <RegisterForm></RegisterForm>
 
           <div className="text-14-regular mt-20 flex justify-between">
@@ -34,8 +35,8 @@ const MainDashBoardPage = async () => {
         src={"/assets/images/register-img.png"}
         alt={""}
         width={1000}
-        height={1000}
-        className="side-img max-w-[30%]"
+        height={2000}
+        className="side-img max-w-[30%] h-screen object-cover"
       />
     </div>
   );
