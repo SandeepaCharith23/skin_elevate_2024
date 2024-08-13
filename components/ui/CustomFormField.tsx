@@ -20,7 +20,6 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "./select";
-import { FileUploader } from "../FileUploader";
 
 interface CustomProps {
   control: Control<any>;
@@ -112,12 +111,12 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     case FormFieldType.SKELETON:
       return renderSkeleton ? renderSkeleton(field) : null;
 
-    case FormFieldType.FILE_UPLOAD:
-      return (
-        <FormControl>
-          <FileUploader files={field.value} onChange={field.onChange} />
-        </FormControl>
-      );
+    // case FormFieldType.FILE_UPLOAD:
+    //   return (
+    //     <FormControl>
+    //       <FileUploader files={field.value} onChange={field.onChange} />
+    //     </FormControl>
+    //   );
 
     case FormFieldType.SELECT:
       return (

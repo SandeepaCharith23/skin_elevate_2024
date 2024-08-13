@@ -18,7 +18,7 @@ import { GenderOptions, IdentificationTypes } from "@/constants";
 import { RadioGroupItem } from "@radix-ui/react-radio-group";
 import { Label } from "../ui/label";
 import { SelectItem } from "../ui/select";
-import { FileUploader } from "../FileUploader";
+import FileUploader from "../FileUploader";
 
 export enum FormFieldType {
   INPUT = "input",

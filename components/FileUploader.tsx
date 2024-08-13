@@ -1,53 +1,46 @@
-"use client";
+// FileUploader.tsx
+import React, { useState } from "react";
 
-import Image from "next/image";
-import React, { useCallback } from "react";
-import { useDropzone } from "react-dropzone";
+interface FileUploaderProps {
+  files: File | undefined;
+  onChange: (files: File | undefined) => void;
+}
 
-import { convertFileToUrl } from "@/lib/utils";
+const FileUploader: React.FC<FileUploaderProps> = ({ files, onChange }) => {
+  const [preview, setPreview] = useState<string | null>(null);
 
-type FileUploaderProps = {
-  files: File[] | undefined;
-  onChange: (files: File[]) => void;
-};
-
-export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    onChange(acceptedFiles);
-  }, []);
-
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+      onChange(file);
+    }
+  };
 
   return (
-    <div {...getRootProps()} className="file-upload">
-      <input {...getInputProps()} />
-      {files && files?.length > 0 ? (
-        <Image
-          src={convertFileToUrl(files[0])}
-          width={1000}
-          height={1000}
-          alt="uploaded image"
-          className="max-h-[400px] overflow-hidden object-cover"
-        />
-      ) : (
-        <>
-          <Image
-            src="/assets/icons/upload.svg"
-            width={40}
-            height={40}
-            alt="upload"
+    <div className="file-uploader">
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        className="hidden"
+        id="file-input"
+      />
+      <label htmlFor="file-input" className="cursor-pointer">
+        {preview ? (
+          <img
+            src={preview}
+            alt="Preview"
+            className="w-full h-auto object-cover"
           />
-          <div className="file-upload_label">
-            <p className="text-14-regular ">
-              <span className="text-green-500">Click to upload </span>
-              or drag and drop
-            </p>
-            <p className="text-12-regular">
-              SVG, PNG, JPG or GIF (max. 800x400px)
-            </p>
+        ) : (
+          <div className="flex items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded">
+            <span className="text-gray-600">Click or Drag to upload</span>
           </div>
-        </>
-      )}
+        )}
+      </label>
     </div>
   );
 };
+
+export default FileUploader;
