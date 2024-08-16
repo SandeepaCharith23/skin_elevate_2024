@@ -26,7 +26,7 @@ export enum FormFieldType {
   FILE_INPUT = "FILE_INPUT",
 }
 
-export const PatientForm = () => {
+export const LoginForm = () => {
   console.log("PatientForm Rebuilds");
 
   //router
@@ -172,4 +172,4 @@ export const PatientForm = () => {
   );
 };
 
-export default PatientForm;
+export default LoginForm;

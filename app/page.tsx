@@ -1,4 +1,5 @@
-import PatientForm from "@/components/forms/PatientForm";
+import LoginForm from "@/components/forms/LoginForm";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export default function Home() {
             className="mb-12 h-10 w-fit"
           />
 
-          <PatientForm></PatientForm>
+          <LoginForm></LoginForm>
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
               © 2024- SKIN ELEVATE
